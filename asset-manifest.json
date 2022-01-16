@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/indus-valley-script/static/css/main.073c9b0a.css",
+    "main.js": "/indus-valley-script/static/js/main.8c796e92.js",
+    "static/js/787.bbff2315.chunk.js": "/indus-valley-script/static/js/787.bbff2315.chunk.js",
+    "static/media/logo.svg": "/indus-valley-script/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/indus-valley-script/index.html",
+    "main.073c9b0a.css.map": "/indus-valley-script/static/css/main.073c9b0a.css.map",
+    "main.8c796e92.js.map": "/indus-valley-script/static/js/main.8c796e92.js.map",
+    "787.bbff2315.chunk.js.map": "/indus-valley-script/static/js/787.bbff2315.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.8c796e92.js"
+  ]
+}
