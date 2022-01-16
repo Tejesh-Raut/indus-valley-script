@@ -4,6 +4,8 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const linkElements = screen.getAllByText(/INDUS VALLEY SCRIPT/i);
+  linkElements.forEach(linkElement => {
+    expect(linkElement).toBeInTheDocument();
+  });
 });
