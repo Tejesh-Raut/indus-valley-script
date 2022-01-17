@@ -1,13 +1,21 @@
-import React from 'react';
 import './App.css';
-import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import * as actions from './store/actionCreators';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import Dashboard from './components/Dashboard';
+import React from 'react';
 
-function App() {
+const App = () => {
+  const theme = useSelector((state: AppState) => state.theme, shallowEqual);
+  const dispatch = useDispatch();
+  const toggleTheme = React.useCallback(() => dispatch(actions.toggleTheme()), [dispatch]);
   return (
       <div className="App">
-        <ResponsiveAppBar/>
+        <ThemeProvider theme={createTheme(theme)}>
+          <Dashboard toggleTheme={toggleTheme}/>
+        </ThemeProvider>
       </div>
   );
-}
+};
 
 export default App;
