@@ -1,5 +1,8 @@
 # Indus Valley Script
 
+[![Website](https://img.shields.io/website?label=indus-valley-script&style=for-the-badge&url=https%3A%2F%2FTejesh-Raut.github.io/indus-valley-script)](https://tejesh-raut.github.io/indus-valley-script/)
+
+
 [![Node.js CI](https://github.com/Tejesh-Raut/indus-valley-script/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/Tejesh-Raut/indus-valley-script/actions/workflows/node.js.yml)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
