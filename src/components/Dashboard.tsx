@@ -23,6 +23,7 @@ import { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import MuiDrawer from '@mui/material/Drawer';
 import Paper from '@mui/material/Paper';
 import { References } from './References';
+import { Signs } from './Signs';
 import { SxProps } from '@mui/system';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -182,7 +183,8 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ toggleTheme }) => {
                     <Routes>
                       <Route path={Constants.routes[0]} element={<Home/>} />
                       <Route path={Constants.routes[1]} element={<IndusTexts/>}/>
-                      <Route path={Constants.routes[2]} element={<References/>}/>
+                      <Route path={Constants.routes[2]} element={<Signs/>}/>
+                      <Route path={Constants.routes[3]} element={<References/>}/>
                     </Routes>
                   </Paper>
                 </Grid>

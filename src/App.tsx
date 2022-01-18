@@ -2,8 +2,8 @@ import './App.css';
 import * as actions from './store/actionCreators';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
+import { HashRouter } from 'react-router-dom';
 import React from 'react';
 
 const App = () => {
@@ -13,9 +13,9 @@ const App = () => {
   return (
       <div className="App">
         <ThemeProvider theme={createTheme(theme)}>
-          <BrowserRouter>
+          <HashRouter>
             <Dashboard toggleTheme={toggleTheme}/>
-          </BrowserRouter>
+          </HashRouter>
         </ThemeProvider>
       </div>
   );
