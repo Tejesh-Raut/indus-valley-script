@@ -2,6 +2,7 @@ import './App.css';
 import * as actions from './store/actionCreators';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import React from 'react';
 
@@ -12,7 +13,9 @@ const App = () => {
   return (
       <div className="App">
         <ThemeProvider theme={createTheme(theme)}>
-          <Dashboard toggleTheme={toggleTheme}/>
+          <BrowserRouter>
+            <Dashboard toggleTheme={toggleTheme}/>
+          </BrowserRouter>
         </ThemeProvider>
       </div>
   );

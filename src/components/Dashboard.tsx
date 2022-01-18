@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { MainListItems, SecondaryListItems } from './listItems';
+import { Route, Routes } from 'react-router-dom';
 import { Theme, styled } from '@mui/material/styles';
-import { mainListItems, secondaryListItems } from './listItems';
 import { shallowEqual, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -11,7 +12,9 @@ import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
+import { Home } from './Home';
 import IconButton from '@mui/material/IconButton';
+import { IndusTexts } from './IndusTexts';
 import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -19,6 +22,7 @@ import MuiAppBar from '@mui/material/AppBar';
 import { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import MuiDrawer from '@mui/material/Drawer';
 import Paper from '@mui/material/Paper';
+import { References } from './References';
 import { SxProps } from '@mui/system';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -146,9 +150,9 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ toggleTheme }) => {
               </IconButton>
             </Toolbar>
             <Divider />
-            <List>{mainListItems}</List>
+            <List><MainListItems/></List>
             <Divider />
-            <List>{secondaryListItems}</List>
+            <List><SecondaryListItems/></List>
           </Drawer>
           <Box
               component="main"
@@ -175,6 +179,11 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ toggleTheme }) => {
                         height: 240,
                       }}
                   >
+                    <Routes>
+                      <Route path={Constants.routes[0]} element={<Home/>} />
+                      <Route path={Constants.routes[1]} element={<IndusTexts/>}/>
+                      <Route path={Constants.routes[2]} element={<References/>}/>
+                    </Routes>
                   </Paper>
                 </Grid>
                 {/* Recent Deposits */}
