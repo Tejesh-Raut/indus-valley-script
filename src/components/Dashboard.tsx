@@ -11,7 +11,6 @@ import { Constants } from '../utils/Constants';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
 import { Home } from './Home';
 import IconButton from '@mui/material/IconButton';
 import { IndusTexts } from './IndusTexts';
@@ -169,43 +168,21 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ toggleTheme }) => {
           >
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              <Grid container spacing={3}>
-                {/* Chart */}
-                <Grid item xs={12} md={8} lg={9}>
-                  <Paper
-                      sx={{
-                        p: 2,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        height: 240,
-                      }}
-                  >
-                    <Routes>
-                      <Route path={Constants.routes[0]} element={<Home/>} />
-                      <Route path={Constants.routes[1]} element={<IndusTexts/>}/>
-                      <Route path={Constants.routes[2]} element={<Signs/>}/>
-                      <Route path={Constants.routes[3]} element={<References/>}/>
-                    </Routes>
-                  </Paper>
-                </Grid>
-                {/* Recent Deposits */}
-                <Grid item xs={12} md={4} lg={3}>
-                  <Paper
-                      sx={{
-                        p: 2,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        height: 240,
-                      }}
-                  >
-                  </Paper>
-                </Grid>
-                {/* Recent Orders */}
-                <Grid item xs={12}>
-                  <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  </Paper>
-                </Grid>
-              </Grid>
+              <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+              >
+                <Routes>
+                  <Route path={Constants.routes[0]} element={<Home/>} />
+                  <Route path={Constants.routes[1]} element={<IndusTexts/>}/>
+                  <Route path={Constants.routes[2]} element={<Signs/>}/>
+                  <Route path={Constants.routes[3]} element={<References/>}/>
+                </Routes>
+              </Paper>
               <Copyright sx={{ pt: 4 }} />
             </Container>
           </Box>

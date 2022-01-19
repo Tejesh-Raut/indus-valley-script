@@ -34,7 +34,7 @@ export const MainListItems = () => (
 
 export const SecondaryListItems = () => (
     <div>
-      <ListItem button component={Link} to={Constants.routes[2]} selected={!!useMatch(Constants.routes[3])}>
+      <ListItem button component={Link} to={Constants.routes[3]} selected={!!useMatch(Constants.routes[3])}>
         <ListItemIcon>
           <AssignmentIcon />
         </ListItemIcon>
