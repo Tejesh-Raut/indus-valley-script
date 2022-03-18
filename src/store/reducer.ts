@@ -1,8 +1,16 @@
 import * as actionTypes from './actionTypes';
 import { Constants } from '../utils/Constants';
 
+const getUserPreferredTheme = () => {
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return Constants.themeType.dark;
+  } else {
+    return Constants.themeType.light;
+  }
+};
+
 const initialState: AppState = {
-  theme: { palette: { mode: Constants.themeType.light } }
+  theme: { palette: { mode: getUserPreferredTheme() } }
 };
 
 const reducer = (state: AppState = initialState, action: AppAction): AppState => {

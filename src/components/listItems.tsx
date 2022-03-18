@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { Constants } from '../utils/Constants';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import DescriptionIcon from '@mui/icons-material/Description';
 import FontDownloadIcon from '@mui/icons-material/FontDownload';
+import HomeIcon from '@mui/icons-material/Home';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -13,7 +13,7 @@ export const MainListItems = () => (
     <div>
       <ListItem button component={Link} to={Constants.routes[0]} selected={!!useMatch(Constants.routes[0])}>
         <ListItemIcon>
-          <DashboardIcon />
+          <HomeIcon />
         </ListItemIcon>
         <ListItemText primary="Introduction" />
       </ListItem>

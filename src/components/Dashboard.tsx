@@ -26,13 +26,14 @@ import { Signs } from './Signs';
 import { SxProps } from '@mui/system';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import config from '../utils/config.json';
 
 function Copyright(props: { sx?: SxProps<Theme> }) {
   return (
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
-        <Link color="inherit" href={Constants.authorWebpage}>
-          {Constants.author}
+        <Link color="inherit" href={config.authorWebpage}>
+          {config.author}
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -95,7 +96,7 @@ type DashboardContentProps = {
   toggleTheme: () => void;
 }
 const DashboardContent: React.FC<DashboardContentProps> = ({ toggleTheme }) => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -173,7 +174,7 @@ const DashboardContent: React.FC<DashboardContentProps> = ({ toggleTheme }) => {
                     p: 2,
                     display: 'flex',
                     flexDirection: 'column',
-                    height: 240,
+                    height: '100%',
                   }}
               >
                 <Routes>
