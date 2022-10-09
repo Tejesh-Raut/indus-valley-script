@@ -21,3 +21,6 @@ code {
   filter: invert(1);
 }
 
+.indus-text {
+  height: -webkit-fill-available;
+}
