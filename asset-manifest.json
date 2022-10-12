@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/indus-valley-script/static/css/main.f4308d6a.css",
-    "main.js": "/indus-valley-script/static/js/main.a93c4e68.js",
+    "main.css": "/indus-valley-script/static/css/main.92192e8a.css",
+    "main.js": "/indus-valley-script/static/js/main.c1f24aa8.js",
     "static/js/787.5e7ee347.chunk.js": "/indus-valley-script/static/js/787.5e7ee347.chunk.js",
     "static/media/000.svg": "/indus-valley-script/static/media/000.7285851e0699ed82debc.svg",
     "static/media/952.svg": "/indus-valley-script/static/media/952.ce2355d8e0fd65f897f0.svg",
@@ -720,12 +720,12 @@
     "static/media/625.svg": "/indus-valley-script/static/media/625.5d986e028514c6a76738.svg",
     "static/media/031.svg": "/indus-valley-script/static/media/031.56ddad2266567c1cd7df.svg",
     "static/media/001.svg": "/indus-valley-script/static/media/001.90cefd40c9b98eefef85.svg",
-    "main.f4308d6a.css.map": "/indus-valley-script/static/css/main.f4308d6a.css.map",
-    "main.a93c4e68.js.map": "/indus-valley-script/static/js/main.a93c4e68.js.map",
+    "main.92192e8a.css.map": "/indus-valley-script/static/css/main.92192e8a.css.map",
+    "main.c1f24aa8.js.map": "/indus-valley-script/static/js/main.c1f24aa8.js.map",
     "787.5e7ee347.chunk.js.map": "/indus-valley-script/static/js/787.5e7ee347.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f4308d6a.css",
-    "static/js/main.a93c4e68.js"
+    "static/css/main.92192e8a.css",
+    "static/js/main.c1f24aa8.js"
   ]
 }
