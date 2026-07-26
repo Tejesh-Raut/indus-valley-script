@@ -2,34 +2,55 @@
 
 [![Website](https://img.shields.io/website?label=indus-valley-script&style=for-the-badge&url=https%3A%2F%2FTejesh-Raut.github.io/indus-valley-script)](https://tejesh-raut.github.io/indus-valley-script/)
 
+Interactive explorer for the undeciphered Indus (Harappan) script. This repository hosts a browser-based app for browsing inscriptions, exploring sign glyphs, and analyzing the corpus through charts and maps.
 
-[![Node.js CI](https://github.com/Tejesh-Raut/indus-valley-script/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/Tejesh-Raut/indus-valley-script/actions/workflows/node.js.yml)
+## What’s in this project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app is a static single-page website with no build step required. It includes:
 
-## Available Scripts
+- a searchable inscriptions view for browsing texts and metadata
+- a sign browser with SVG and ICIT glyph options
+- modal detail views for individual texts and signs
+- analysis views for frequency, positions, sequences, similarity, maps, and site-level summaries
+- a light/dark theme toggle
 
-In the project directory, you can run:
+## Project structure
 
-### `npm start`
+- index.html — page layout, views, and UI structure
+- app.js — data loading, filtering, rendering, and interactive behavior
+- styles.css — visual styling and layout
+- data/ — corpus data and metadata files
+  - texts.js — inscription records
+  - signs.js — sign catalog
+  - icit.js — ICIT reference data
+  - geo.js — geographic metadata
+  - sites_geo.js — site location data
+- signs/ — SVG glyph images for signs
+- icit/ — ICIT reference images in full and small sizes
+- build/ — static deployment assets
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Running locally
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Because this is a static site, you can view it directly in a browser or serve the folder locally.
 
-### `npm test`
+### Option 1: open directly
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open index.html in your browser.
 
-### `npm run build`
+### Option 2: serve locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+From the repository root, run:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+python3 -m http.server 8000
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then open http://localhost:8000 in your browser.
+
+## Data and content notes
+
+The app is driven by the bundled data files in the data/ directory. The corpus includes a large set of inscription records and sign data, and the interface renders this content client-side in the browser.
+
+## Deployment
+
+This project is intended for static hosting, such as GitHub Pages. The live site is available at https://tejesh-raut.github.io/indus-valley-script/.
