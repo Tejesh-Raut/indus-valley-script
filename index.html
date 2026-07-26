@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="google-site-verification" content="dpvuGrxcQSwZRrAg3RHWK0WBCE-BKTJwN8VGdPDU-gs" />
 
   <!-- ============ SEO ============ -->
   <title>Indus Valley Script — Interactive Harappan Sign &amp; Inscription Explorer</title>
-  <meta name="description" content="Explore the undeciphered Indus (Harappan) script — 715 signs and 5,445 Bronze-Age inscriptions with glyph images, interactive find-spot maps, frequency charts and[...]
-  <meta name="keywords" content="Indus script, Harappan script, Indus Valley Civilisation, Indus signs, Indus inscriptions, undeciphered script, ICIT, Mohenjo-daro, Harappa, epigraphy, sign concordanc[...]
+  <meta name="description" content="Explore the undeciphered Indus (Harappan) script — 715 signs and 5,445 Bronze-Age inscriptions with glyph images, interactive find-spot maps, frequency charts and sign-sequence analysis." />
+  <meta name="keywords" content="Indus script, Harappan script, Indus Valley Civilisation, Indus signs, Indus inscriptions, undeciphered script, ICIT, Mohenjo-daro, Harappa, epigraphy, sign concordance, Bronze Age, Indus seals, Harappan seals, ancient scripts" />
   <meta name="author" content="Tejesh Raut" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#b4530a" />
@@ -39,7 +38,7 @@
     "@type": "WebApplication",
     "name": "Indus Valley Script — Interactive Harappan Script Explorer",
     "url": "https://tejesh-raut.github.io/indus-valley-script/",
-    "description": "Interactive explorer for the undeciphered Indus (Harappan) script: 715 signs and 5,445 Bronze-Age inscriptions with glyph images, find-spot maps, frequency charts and sign-sequence[...]
+    "description": "Interactive explorer for the undeciphered Indus (Harappan) script: 715 signs and 5,445 Bronze-Age inscriptions with glyph images, find-spot maps, frequency charts and sign-sequence analysis.",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Any (modern web browser)",
     "isAccessibleForFree": true,
@@ -228,7 +227,7 @@
         </div>
         <div class="card chart">
           <h3>Positional profile <span class="hint">reading order</span></h3>
-          <p class="muted small">How often each sign appears <b>initial</b> (first read), <b>medial</b>, <b>terminal</b> (last read), or <b>solo</b> (single-sign text). Reading order derived from the [...]
+          <p class="muted small">How often each sign appears <b>initial</b> (first read), <b>medial</b>, <b>terminal</b> (last read), or <b>solo</b> (single-sign text). Reading order derived from the direction field (R/L assumed when unknown).</p>
           <div class="pos-legend" id="posLegend"></div>
         </div>
       </div>
@@ -248,7 +247,7 @@
         </div>
         <div class="table-wrap">
           <table class="grid" id="statsTable">
-            <thead><tr><th>Sign</th><th>#</th><th class="num">Freq</th><th class="num">% corpus</th><th class="num">ICIT total</th><th class="num">Initial</th><th class="num">Medial</th><th class[...]
+            <thead><tr><th>Sign</th><th>#</th><th class="num">Freq</th><th class="num">% corpus</th><th class="num">ICIT total</th><th class="num">Initial</th><th class="num">Medial</th><th class="num">Terminal</th><th>Position</th></tr></thead>
             <tbody id="statsBody"></tbody>
           </table>
         </div>
@@ -341,14 +340,14 @@
     <section id="view-entropy" class="view" hidden>
       <div class="card chart">
         <h3>Predictability of the next sign <span class="hint">bits of uncertainty</span></h3>
-        <p class="muted small">Lower bars mean more predictable. If knowing the previous sign lowers uncertainty (conditional &lt; unigram), the order carries information — a hallmark of language, a[...]
+        <p class="muted small">Lower bars mean more predictable. If knowing the previous sign lowers uncertainty (conditional &lt; unigram), the order carries information — a hallmark of language, and unlike a uniform-random script.</p>
         <div id="entropyBars"></div>
         <div id="entropyNums" class="entropy-nums"></div>
       </div>
       <div class="card chart">
         <h3>Per-symbol (block) entropy <span class="hint">n = 1, 2, 3</span></h3>
         <div id="blockEntropy"></div>
-        <p class="muted small">Per-symbol entropy of n-grams divided by n. A moderate decline (not flat, not collapsing) is typical of structured language rather than random or rigidly fixed sequences[...]
+        <p class="muted small">Per-symbol entropy of n-grams divided by n. A moderate decline (not flat, not collapsing) is typical of structured language rather than random or rigidly fixed sequences.</p>
       </div>
     </section>
 
@@ -361,8 +360,8 @@
           <div class="field"><label for="collMin">Min count</label><select id="collMin"><option>3</option><option selected>5</option><option>10</option><option>20</option></select></div>
           <div class="result-meta inline" id="collMeta"></div>
         </div>
-        <p class="muted small">Adjacent sign pairs (reading order) ranked by association strength — candidate compound units / "words", not just the most frequent pairs.</p>
-        <div class="table-wrap"><table class="grid" id="collTable"><thead><tr><th>Pair</th><th class="num">Count</th><th class="num">PMI</th><th class="num">G²</th></tr></thead><tbody id="collBody"><[...]
+        <p class="muted small">Adjacent sign pairs (reading order) ranked by association strength — candidate compound units / “words”, not just the most frequent pairs.</p>
+        <div class="table-wrap"><table class="grid" id="collTable"><thead><tr><th>Pair</th><th class="num">Count</th><th class="num">PMI</th><th class="num">G²</th></tr></thead><tbody id="collBody"></tbody></table></div>
       </div>
     </section>
 
@@ -371,8 +370,8 @@
       <div class="card">
         <h3>Recurring sign blocks <span class="hint">candidate words / phrases</span></h3>
         <div class="toolbar tight">
-          <div class="field"><label for="segLen">Length</label><select id="segLen"><option value="0">any (2–6)</option><option>2</option><option>3</option><option>4</option><option>5</option><o[...]
-          <div class="field"><label for="segRank">Rank by</label><select id="segRank"><option value="texts"># inscriptions</option><option value="score">length × inscriptions</option></select></[...]
+          <div class="field"><label for="segLen">Length</label><select id="segLen"><option value="0">any (2–6)</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="field"><label for="segRank">Rank by</label><select id="segRank"><option value="texts"># inscriptions</option><option value="score">length × inscriptions</option></select></div>
           <div class="result-meta inline" id="segMeta"></div>
         </div>
         <p class="muted small">Contiguous sign sequences that repeat across many different inscriptions.</p>
@@ -386,9 +385,9 @@
         <h3>Positional distribution <span class="hint">relative position in text</span></h3>
         <div class="toolbar tight">
           <div class="field"><label for="posTopN">Top signs</label><select id="posTopN"><option>25</option><option selected>40</option><option>60</option></select></div>
-          <div class="field"><label for="posSort">Sort</label><select id="posSort"><option value="freq">Frequency</option><option value="early">Front-loaded first</option><option value="late">End[...]
+          <div class="field"><label for="posSort">Sort</label><select id="posSort"><option value="freq">Frequency</option><option value="early">Front-loaded first</option><option value="late">End-loaded first</option></select></div>
         </div>
-        <p class="muted small">Each row is a sign; columns run from the start (left) to the end (right) of the inscription in reading order. Darker = a larger share of that sign's occurrences fal[...]
+        <p class="muted small">Each row is a sign; columns run from the start (left) to the end (right) of the inscription in reading order. Darker = a larger share of that sign's occurrences falls in that position band.</p>
         <div id="posHeat" class="matrix-wrap"></div>
       </div>
     </section>
@@ -396,7 +395,7 @@
     <!-- ============ SIMILARITY VIEW ============ -->
     <section id="view-similarity" class="view" hidden>
       <div class="card">
-        <h3>Distributional similarity <span class="hint">"signs used like this one"</span></h3>
+        <h3>Distributional similarity <span class="hint">“signs used like this one”</span></h3>
         <div class="toolbar tight">
           <div class="field"><label for="simSign">Sign #</label><input id="simSign" type="text" inputmode="numeric" placeholder="e.g. 740"/></div>
           <div class="result-meta inline" id="simMeta"></div>
@@ -466,7 +465,7 @@
           <div class="field"><label for="mapSign">Sign #</label><input id="mapSign" type="text" inputmode="numeric" placeholder="e.g. 740"/></div>
           <div class="result-meta inline" id="mapMeta"></div>
         </div>
-        <p class="muted small">Marker area is proportional to the selected measure. Click a site to see its inscriptions. Coordinates are approximate; a few minor find-spots without reliable coor[...]
+        <p class="muted small">Marker area is proportional to the selected measure. Click a site to see its inscriptions. Coordinates are approximate; a few minor find-spots without reliable coordinates are omitted.</p>
         <div id="map" class="map-wrap"></div>
       </div>
     </section>
