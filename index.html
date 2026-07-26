@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ============ SEO ============ -->
+  <title>Indus Valley Script — Interactive Harappan Sign &amp; Inscription Explorer</title>
+  <meta name="description" content="Explore the undeciphered Indus (Harappan) script — 715 signs and 5,445 Bronze-Age inscriptions with glyph images, interactive find-spot maps, frequency charts and sign-sequence analysis." />
+  <meta name="keywords" content="Indus script, Harappan script, Indus Valley Civilisation, Indus signs, Indus inscriptions, undeciphered script, ICIT, Mohenjo-daro, Harappa, epigraphy, sign concordance, Bronze Age, Indus seals, Harappan seals, ancient scripts" />
+  <meta name="author" content="Tejesh Raut" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#b4530a" />
+  <link rel="canonical" href="https://tejesh-raut.github.io/indus-valley-script/" />
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Indus Valley Script" />
+  <meta property="og:title" content="Indus Valley Script — Decode the Harappan Script" />
+  <meta property="og:description" content="An interactive explorer for the undeciphered Indus Valley script: 715 signs, 5,445 inscriptions, glyph images, find-spot maps and statistical analysis." />
+  <meta property="og:url" content="https://tejesh-raut.github.io/indus-valley-script/" />
+  <meta property="og:image" content="og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Indus Valley Script — a row of Harappan sign glyphs with the tagline Decode the Harappan Script." />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Indus Valley Script — Decode the Harappan Script" />
+  <meta name="twitter:description" content="Interactive explorer for the undeciphered Indus/Harappan script: 715 signs, 5,445 inscriptions, glyph images, maps and analysis." />
+  <meta name="twitter:image" content="og-image.png" />
+
+  <!-- Structured data for rich search results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Indus Valley Script — Interactive Harappan Script Explorer",
+    "url": "https://tejesh-raut.github.io/indus-valley-script/",
+    "description": "Interactive explorer for the undeciphered Indus (Harappan) script: 715 signs and 5,445 Bronze-Age inscriptions with glyph images, find-spot maps, frequency charts and sign-sequence analysis.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any (modern web browser)",
+    "isAccessibleForFree": true,
+    "inLanguage": "en",
+    "image": "og-image.png",
+    "author": { "@type": "Person", "name": "Tejesh Raut", "url": "https://tejesh-raut.github.io/" },
+    "about": ["Indus script", "Harappan script", "Indus Valley Civilisation", "Epigraphy", "Ancient writing systems"],
+    "keywords": "Indus script, Harappan script, Indus Valley Civilisation, Mohenjo-daro, Harappa, undeciphered script, epigraphy"
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-mark" src="favicon.svg" alt="Indus Valley Script (sign 740)" />
+      <div>
+        <span class="brand-title">Indus Valley Script</span>
+        <p class="subtitle">Browse the Harappan signs &amp; inscribed texts</p>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button class="tab" data-view="overview">Overview</button>
+      <button class="tab" data-view="texts">Texts</button>
+      <button class="tab" data-view="signs">Signs</button>
+      <button class="tab" data-view="analysis" id="analysisTab" aria-haspopup="true" aria-expanded="false">Analysis <span class="caret">▾</span></button>
+      <button class="tab" data-view="about">About</button>
+    </nav>
+    <button id="themeToggle" class="icon-btn" title="Toggle light/dark theme" aria-label="Toggle theme">
+      <span class="theme-icon">🌙</span>
+    </button>
+  </header>
+
+  <div class="subtabs" id="subtabs" role="menu" hidden>
+    <div class="dd-group">
+      <div class="subgroup">Structure</div>
+      <button class="subtab" data-view="stats">Signs</button>
+      <button class="subtab" data-view="entropy">Entropy</button>
+      <button class="subtab" data-view="collocations">Collocations</button>
+      <button class="subtab" data-view="segments">Segments</button>
+      <button class="subtab" data-view="sequences">Sequences</button>
+      <button class="subtab" data-view="positions">Positions</button>
+    </div>
+    <div class="dd-group">
+      <div class="subgroup">Relations</div>
+      <button class="subtab" data-view="similarity">Similarity</button>
+      <button class="subtab" data-view="matrix">Matrix</button>
+      <button class="subtab" data-view="network">Network</button>
+    </div>
+    <div class="dd-group">
+      <div class="subgroup">Corpus</div>
+      <button class="subtab" data-view="map">Map</button>
+      <button class="subtab" data-view="sites">Sites</button>
+      <button class="subtab" data-view="facets">Facets</button>
+      <button class="subtab" data-view="distinctive">Distinctive</button>
+      <button class="subtab" data-view="duplicates">Duplicates</button>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ OVERVIEW VIEW ============ -->
+    <section id="view-overview" class="view" hidden>
+      <div class="hero card">
+        <div class="hero-main">
+          <p class="hero-kicker">Interactive Harappan script explorer</p>
+          <h1 class="hero-title">Indus Valley Script</h1>
+          <p class="hero-tag">Browse, search and analyse the undeciphered <strong>Harappan script</strong> of the
+            Bronze-Age Indus Valley Civilisation — <b>715</b> catalogued signs and <b>5,445</b> inscriptions
+            from <b>81</b> archaeological sites, complete with glyph images, find-spot maps and statistical
+            tools.</p>
+          <div class="hero-actions">
+            <button class="btn primary" data-goto="texts">Browse inscriptions</button>
+            <button class="btn" data-goto="signs">Explore signs</button>
+            <button class="btn" data-goto="map">Find-spot map</button>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="hero-inscription" id="heroInscription"></div>
+          <div class="hero-cap">A typical Indus seal inscription <span class="mono">+407-032-520-095-585-017-231+</span>, read right to left.</div>
+        </div>
+      </div>
+
+      <div class="stat-cards" id="ovCards"></div>
+
+      <div class="chart-grid">
+        <div class="card chart"><h3>Most frequent signs <span class="hint">(this corpus)</span></h3><div id="ovTopSigns"></div></div>
+        <div class="card chart"><h3>Find-spots <span class="hint">inscriptions per site</span></h3><div id="ovMap"></div></div>
+        <div class="card chart"><h3>Largest sites <span class="hint">(by inscriptions)</span></h3><div id="ovTopSites"></div></div>
+        <div class="card chart"><h3>Text length <span class="hint">(signs per inscription)</span></h3><div id="ovLenHist"></div></div>
+        <div class="card chart"><h3>Chronology <span class="hint">broad, approximate</span></h3><div id="ovPeriod"></div></div>
+        <div class="card chart"><h3>Reading direction</h3><div id="ovDir"></div></div>
+        <div class="card chart"><h3>Material</h3><div id="ovMaterial"></div></div>
+        <div class="card chart"><h3>Object type</h3><div id="ovType"></div></div>
+        <div class="card chart"><h3>Completeness</h3><div id="ovComplete"></div></div>
+      </div>
+    </section>
+
+    <!-- ============ TEXTS VIEW ============ -->
+    <section id="view-texts" class="view" hidden>
+      <div class="toolbar">
+        <div class="field grow">
+          <label for="txtSearch">Search</label>
+          <input id="txtSearch" type="search" placeholder="site, text code, museum, reference, notes…" />
+        </div>
+        <div class="field">
+          <label for="siteFilter">Site</label>
+          <select id="siteFilter"><option value="">All sites</option></select>
+        </div>
+        <div class="field">
+          <label for="dirFilter">Direction</label>
+          <select id="dirFilter"><option value="">Any</option></select>
+        </div>
+        <div class="field">
+          <label for="signFilter">Contains sign #</label>
+          <input id="signFilter" type="text" inputmode="numeric" placeholder="e.g. 740" />
+        </div>
+        <div class="field">
+          <label for="pageSize">Per page</label>
+          <select id="pageSize">
+            <option>25</option><option>50</option><option>100</option>
+          </select>
+        </div>
+        <button id="resetFilters" class="btn ghost">Reset</button>
+      </div>
+
+      <div class="result-meta" id="txtMeta"></div>
+
+      <div class="table-wrap">
+        <table class="grid" id="txtTable">
+          <thead>
+            <tr>
+              <th class="col-id">ID</th>
+              <th class="col-text">Text</th>
+              <th>Site</th>
+              <th>Text code</th>
+              <th class="num">Signs</th>
+              <th>Dir.</th>
+              <th>Period</th>
+            </tr>
+          </thead>
+          <tbody id="txtBody"></tbody>
+        </table>
+      </div>
+
+      <div class="pager" id="txtPager"></div>
+    </section>
+
+    <!-- ============ SIGNS VIEW ============ -->
+    <section id="view-signs" class="view" hidden>
+      <div class="toolbar">
+        <div class="field grow">
+          <label for="signSearch">Search sign #</label>
+          <input id="signSearch" type="search" placeholder="e.g. 410 or 740" />
+        </div>
+        <div class="field">
+          <label for="signSort">Sort</label>
+          <select id="signSort">
+            <option value="icit">Frequency (ICIT total)</option>
+            <option value="freq">Frequency (this corpus)</option>
+            <option value="id">Sign number</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="signGlyph">Glyph</label>
+          <select id="signGlyph">
+            <option value="svg">Line drawing (SVG)</option>
+            <option value="icit">ICIT glyph (photo)</option>
+          </select>
+        </div>
+        <div class="result-meta inline" id="signMeta"></div>
+      </div>
+      <div class="gallery" id="signGallery"></div>
+    </section>
+
+    <!-- ============ SIGN STATISTICS VIEW ============ -->
+    <section id="view-stats" class="view" hidden>
+      <div class="chart-grid two">
+        <div class="card chart">
+          <h3>Rank–frequency (Zipf) <span class="hint">log–log</span></h3>
+          <div id="zipf"></div>
+          <p class="muted small">Each point is a sign: its frequency rank (x) vs corpus frequency (y), both on log scales. A near-straight line is the Zipf pattern typical of natural scripts.</p>
+        </div>
+        <div class="card chart">
+          <h3>Positional profile <span class="hint">reading order</span></h3>
+          <p class="muted small">How often each sign appears <b>initial</b> (first read), <b>medial</b>, <b>terminal</b> (last read), or <b>solo</b> (single-sign text). Reading order derived from the direction field (R/L assumed when unknown).</p>
+          <div class="pos-legend" id="posLegend"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="toolbar tight">
+          <div class="field grow"><label for="statsSearch">Filter sign #</label><input id="statsSearch" type="search" placeholder="e.g. 740"/></div>
+          <div class="field"><label for="statsSort">Sort by</label>
+            <select id="statsSort">
+              <option value="freq">Frequency</option>
+              <option value="initial">% initial</option>
+              <option value="terminal">% terminal</option>
+              <option value="medial">% medial</option>
+              <option value="id">Sign number</option>
+            </select>
+          </div>
+          <div class="result-meta inline" id="statsMeta"></div>
+        </div>
+        <div class="table-wrap">
+          <table class="grid" id="statsTable">
+            <thead><tr><th>Sign</th><th>#</th><th class="num">Freq</th><th class="num">% corpus</th><th class="num">ICIT total</th><th class="num">Initial</th><th class="num">Medial</th><th class="num">Terminal</th><th>Position</th></tr></thead>
+            <tbody id="statsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SEQUENCES VIEW ============ -->
+    <section id="view-sequences" class="view" hidden>
+      <div class="card">
+        <h3>Neighbours of a sign <span class="hint">reading order</span></h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="neighSign">Sign #</label><input id="neighSign" type="text" inputmode="numeric" placeholder="e.g. 740"/></div>
+          <div class="result-meta inline" id="neighMeta"></div>
+        </div>
+        <div id="neighBody" class="neigh-body"></div>
+      </div>
+      <div class="chart-grid two">
+        <div class="card chart"><h3>Top sign pairs <span class="hint">bigrams</span></h3><div id="bigrams"></div></div>
+        <div class="card chart"><h3>Top sign triples <span class="hint">trigrams</span></h3><div id="trigrams"></div></div>
+      </div>
+    </section>
+
+    <!-- ============ SITES VIEW ============ -->
+    <section id="view-sites" class="view" hidden>
+      <div class="card chart"><h3>Inscriptions per site <span class="hint">top 25</span></h3><div id="sitesBar"></div></div>
+      <div class="card">
+        <div class="toolbar tight">
+          <div class="field grow"><label for="sitesSearch">Filter site</label><input id="sitesSearch" type="search" placeholder="e.g. Harappa"/></div>
+          <div class="field"><label for="sitesSort">Sort by</label>
+            <select id="sitesSort">
+              <option value="texts">Inscriptions</option>
+              <option value="signs">Distinct signs</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+          <div class="result-meta inline" id="sitesMeta"></div>
+        </div>
+        <div class="table-wrap">
+          <table class="grid" id="sitesTable">
+            <thead><tr><th>Site</th><th class="num">Inscriptions</th><th class="num">Distinct signs</th><th class="num">Avg length</th><th>Top signs</th></tr></thead>
+            <tbody id="sitesBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FACETS VIEW ============ -->
+    <section id="view-facets" class="view" hidden>
+      <div class="chart-grid two">
+        <div class="card chart">
+          <h3>Distribution by field</h3>
+          <div class="toolbar tight">
+            <div class="field grow"><label for="facetField">Field</label><select id="facetField"></select></div>
+          </div>
+          <div id="facetBar"></div>
+        </div>
+        <div class="card chart">
+          <h3>Cross-tabulation</h3>
+          <div class="toolbar tight">
+            <div class="field"><label for="ctRows">Rows</label><select id="ctRows"></select></div>
+            <div class="field"><label for="ctCols">Columns</label><select id="ctCols"></select></div>
+          </div>
+          <div class="table-wrap" id="crosstab"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MATRIX VIEW ============ -->
+    <section id="view-matrix" class="view" hidden>
+      <div class="card">
+        <h3>Sign co-occurrence matrix</h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="matN">Top signs</label>
+            <select id="matN"><option>20</option><option selected>30</option><option>40</option><option>50</option></select>
+          </div>
+          <div class="field"><label for="matMode">Relation</label>
+            <select id="matMode">
+              <option value="cooc">Co-occurrence (same text)</option>
+              <option value="adj">Adjacency (neighbours)</option>
+            </select>
+          </div>
+          <div class="result-meta inline" id="matMeta"></div>
+        </div>
+        <p class="muted small">Cell colour = how often the row sign and column sign occur together (darker = more). Hover a cell for counts. Diagonal shows each sign's own frequency.</p>
+        <div id="matrix" class="matrix-wrap"></div>
+      </div>
+    </section>
+
+    <!-- ============ ENTROPY VIEW ============ -->
+    <section id="view-entropy" class="view" hidden>
+      <div class="card chart">
+        <h3>Predictability of the next sign <span class="hint">bits of uncertainty</span></h3>
+        <p class="muted small">Lower bars mean more predictable. If knowing the previous sign lowers uncertainty (conditional &lt; unigram), the order carries information — a hallmark of language, and unlike a uniform-random script.</p>
+        <div id="entropyBars"></div>
+        <div id="entropyNums" class="entropy-nums"></div>
+      </div>
+      <div class="card chart">
+        <h3>Per-symbol (block) entropy <span class="hint">n = 1, 2, 3</span></h3>
+        <div id="blockEntropy"></div>
+        <p class="muted small">Per-symbol entropy of n-grams divided by n. A moderate decline (not flat, not collapsing) is typical of structured language rather than random or rigidly fixed sequences.</p>
+      </div>
+    </section>
+
+    <!-- ============ COLLOCATIONS VIEW ============ -->
+    <section id="view-collocations" class="view" hidden>
+      <div class="card">
+        <h3>Collocations <span class="hint">pairs that co-occur more than chance</span></h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="collMetric">Rank by</label><select id="collMetric"><option value="pmi">PMI (bits)</option><option value="g2">Log-likelihood (G²)</option></select></div>
+          <div class="field"><label for="collMin">Min count</label><select id="collMin"><option>3</option><option selected>5</option><option>10</option><option>20</option></select></div>
+          <div class="result-meta inline" id="collMeta"></div>
+        </div>
+        <p class="muted small">Adjacent sign pairs (reading order) ranked by association strength — candidate compound units / “words”, not just the most frequent pairs.</p>
+        <div class="table-wrap"><table class="grid" id="collTable"><thead><tr><th>Pair</th><th class="num">Count</th><th class="num">PMI</th><th class="num">G²</th></tr></thead><tbody id="collBody"></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- ============ SEGMENTS VIEW ============ -->
+    <section id="view-segments" class="view" hidden>
+      <div class="card">
+        <h3>Recurring sign blocks <span class="hint">candidate words / phrases</span></h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="segLen">Length</label><select id="segLen"><option value="0">any (2–6)</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="field"><label for="segRank">Rank by</label><select id="segRank"><option value="texts"># inscriptions</option><option value="score">length × inscriptions</option></select></div>
+          <div class="result-meta inline" id="segMeta"></div>
+        </div>
+        <p class="muted small">Contiguous sign sequences that repeat across many different inscriptions.</p>
+        <div id="segBody"></div>
+      </div>
+    </section>
+
+    <!-- ============ POSITIONS VIEW ============ -->
+    <section id="view-positions" class="view" hidden>
+      <div class="card">
+        <h3>Positional distribution <span class="hint">relative position in text</span></h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="posTopN">Top signs</label><select id="posTopN"><option>25</option><option selected>40</option><option>60</option></select></div>
+          <div class="field"><label for="posSort">Sort</label><select id="posSort"><option value="freq">Frequency</option><option value="early">Front-loaded first</option><option value="late">End-loaded first</option></select></div>
+        </div>
+        <p class="muted small">Each row is a sign; columns run from the start (left) to the end (right) of the inscription in reading order. Darker = a larger share of that sign's occurrences falls in that position band.</p>
+        <div id="posHeat" class="matrix-wrap"></div>
+      </div>
+    </section>
+
+    <!-- ============ SIMILARITY VIEW ============ -->
+    <section id="view-similarity" class="view" hidden>
+      <div class="card">
+        <h3>Distributional similarity <span class="hint">“signs used like this one”</span></h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="simSign">Sign #</label><input id="simSign" type="text" inputmode="numeric" placeholder="e.g. 740"/></div>
+          <div class="result-meta inline" id="simMeta"></div>
+        </div>
+        <p class="muted small">Signs whose neighbour contexts (what precedes/follows them) most resemble the chosen sign's — candidate functional classes.</p>
+        <div id="simBody"></div>
+      </div>
+      <div class="card chart">
+        <h3>Clusters of frequent signs <span class="hint">grouped by shared context</span></h3>
+        <div id="simClusters"></div>
+      </div>
+    </section>
+
+    <!-- ============ DISTINCTIVE VIEW ============ -->
+    <section id="view-distinctive" class="view" hidden>
+      <div class="card">
+        <h3>Distinctive signs <span class="hint">keyness (log-odds z-score)</span></h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="distField">Group by</label><select id="distField"><option value="site">Site</option><option value="period">Period</option></select></div>
+          <div class="field"><label for="distValue">Value</label><select id="distValue"></select></div>
+          <div class="result-meta inline" id="distMeta"></div>
+        </div>
+        <p class="muted small">Signs over- or under-represented in the selected group versus the rest of the corpus (weighted log-odds; higher |z| = more distinctive).</p>
+        <div class="chart-grid two">
+          <div><h4 class="colh4">Over-represented here</h4><div id="distOver"></div></div>
+          <div><h4 class="colh4">Under-represented here</h4><div id="distUnder"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DUPLICATES VIEW ============ -->
+    <section id="view-duplicates" class="view" hidden>
+      <div class="card">
+        <h3>Identical inscriptions <span class="hint">same sign sequence</span></h3>
+        <div class="result-meta" id="dupMeta"></div>
+        <div id="dupExact"></div>
+      </div>
+      <div class="card">
+        <h3>Near-identical inscriptions <span class="hint">differ by one sign</span></h3>
+        <div id="dupNear"></div>
+      </div>
+    </section>
+
+    <!-- ============ NETWORK VIEW ============ -->
+    <section id="view-network" class="view" hidden>
+      <div class="card chart">
+        <h3>Sign transition network</h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="netN">Nodes</label><select id="netN"><option>20</option><option selected>30</option><option>40</option></select></div>
+          <div class="field"><label for="netE">Edges</label><select id="netE"><option>40</option><option selected>70</option><option>100</option></select></div>
+          <div class="field"><label for="netW">Weight</label><select id="netW"><option value="count">Bigram count</option><option value="pmi">PMI</option></select></div>
+        </div>
+        <p class="muted small">Signs placed on a circle (by frequency); arcs link signs that frequently follow one another — thicker = stronger association.</p>
+        <div id="network"></div>
+      </div>
+    </section>
+
+    <!-- ============ MAP VIEW ============ -->
+    <section id="view-map" class="view" hidden>
+      <div class="card chart">
+        <h3>Find-spots map <span class="hint">approximate coordinates</span></h3>
+        <div class="toolbar tight">
+          <div class="field"><label for="mapRegion">Region</label>
+            <select id="mapRegion"><option value="core">Indus region</option><option value="all">All find-spots</option></select></div>
+          <div class="field"><label for="mapSize">Marker size</label>
+            <select id="mapSize"><option value="texts">Inscriptions</option><option value="signs">Distinct signs</option><option value="sign">Frequency of sign #</option></select></div>
+          <div class="field"><label for="mapSign">Sign #</label><input id="mapSign" type="text" inputmode="numeric" placeholder="e.g. 740"/></div>
+          <div class="result-meta inline" id="mapMeta"></div>
+        </div>
+        <p class="muted small">Marker area is proportional to the selected measure. Click a site to see its inscriptions. Coordinates are approximate; a few minor find-spots without reliable coordinates are omitted.</p>
+        <div id="map" class="map-wrap"></div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT VIEW ============ -->
+    <section id="view-about" class="view" hidden>
+      <div class="card prose">
+        <h2>About</h2>
+        <p>The <strong>Indus script</strong> (Harappan script) is a corpus of symbols produced by the
+          Indus Valley Civilisation. Despite many attempts it has not been deciphered; there is no known
+          bilingual inscription, and the script shows little change over time.</p>
+        <p>This is an interactive browser for the sign inventory and the catalogue of inscribed
+          texts, with tools to search, compare and analyse the script.</p>
+        <ul class="stats" id="aboutStats"></ul>
+        <h3>How to read a text</h3>
+        <p>Each text's <em>text&nbsp;code</em> lists its signs left-to-right, separated by
+          <code>-</code>. A <code>/</code> starts a new line. Edges marked <code>+</code> are complete;
+          edges marked <code>[</code> or <code>]</code> are broken/damaged. Sign <code>999</code> denotes
+          an unknown/illegible sign and has no glyph.</p>
+        <h3>References</h3>
+        <ul class="refs">
+          <li>
+            <a href="https://www.oxbowbooks.com/bookinfo.cfm/ID/90121" target="_blank" rel="noopener noreferrer">Interactive Corpus of Indus Text (ICIT)</a>
+            (ISBN 978-1-84217-994-9) by Bryan Kenneth Wells. Finished in 2006.
+          </li>
+          <li>
+            <a href="https://www.indus.epigraphica.de/" target="_blank" rel="noopener noreferrer">ICIT Database of Indus Writing</a>
+            developed by Bryan K. Wells and Andreas Fuls as a co-operative effort.
+          </li>
+        </ul>
+        <p class="muted">Text corpus &amp; SVG sign vectors from the original <em>indus-valley-script</em> project;
+          canonical sign glyph images and sign frequencies (total &amp; per-site) are credited under References above.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    Copyright © <a href="https://tejesh-raut.github.io/" target="_blank" rel="noopener noreferrer">Tejesh Raut</a> 2026.
+  </footer>
+
+  <!-- ============ TEXT DETAIL MODAL ============ -->
+  <div id="detail" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <div class="modal-head">
+        <h2 id="detailTitle">Text</h2>
+        <button class="icon-btn" data-close aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="detailBody"></div>
+    </div>
+  </div>
+
+  <!-- ============ SIGN DETAIL MODAL ============ -->
+  <div id="signdetail" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="signDetailTitle">
+      <div class="modal-head">
+        <h2 id="signDetailTitle">Sign</h2>
+        <button class="icon-btn" data-close aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="signDetailBody"></div>
+    </div>
+  </div>
+
+  <!-- Data (embedded so the app works from file:// with no server) -->
+  <script src="data/signs.js"></script>
+  <script src="data/texts.js"></script>
+  <script src="data/icit.js"></script>
+  <script src="data/geo.js"></script>
+  <script src="data/sites_geo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
